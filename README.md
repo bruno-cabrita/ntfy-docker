@@ -10,7 +10,9 @@
 
 4. Click the **Deploy** button
 
-5. To add an admin, enter container terminal and run the command: `ntfy user add --role=admin <john>` 
+5. To add an admin, enter container terminal and run the command: `ntfy user add --role=admin <john>`
+
+5. To add an anonymous account for webhooks, enter container terminal and run the command: `ntfy access everyone "webhooks" write` 
 
 6. Browse to the url set in `NTFY_BASE_URL` environment variable.
 
