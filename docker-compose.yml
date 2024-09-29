@@ -1,0 +1,27 @@
+services:
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name: ntfy
+    restart: unless-stopped
+    command: serve
+    environment:
+      - NTFY_BASE_URL=${NTFY_BASE_URL}
+      - NTFY_CACHE_FILE=/var/cache/ntfy/cache.db
+      - NTFY_AUTH_FILE=/var/lib/ntfy/user.db
+      - NTFY_AUTH_DEFAULT_ACCESS=${NTFY_AUTH_DEFAULT_ACCESS}
+      - NTFY_ATTACHMENT_CACHE_DIR=/var/cache/ntfy
+      - NTFY_ATTACHMENT_TOTAL_SIZE_LIMIT=${NTFY_ATTACHMENT_TOTAL_SIZE_LIMIT}
+      - NTFY_ENABLE_LOGIN=${NTFY_ENABLE_LOGIN}
+      - NTFY_UPSTREAM_BASE_URL=https://ntfy.sh
+    volumes:
+      - ntfy_cache:/var/cache/ntfy
+      - ntfy_etc:/etc/ntfy
+      - ntfy_auth:/var/lib/ntfy
+    ports:
+      - 8010:80
+
+volumes:
+  ntfy_cache:
+  ntfy_etc:
+  ntfy_auth:
+
